@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="ArbolB.cs" />
     <Compile Include="Entry.cs" />
+    <Compile Include="Lista.cs" />
     <Compile Include="Node.cs" />
     <Compile Include="Nodo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

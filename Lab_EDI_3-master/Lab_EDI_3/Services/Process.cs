@@ -14,7 +14,7 @@ namespace Lab_EDI_3.Services
         //Lista<Cliente> MiListadoClientes = new Lista<Cliente>();
         //Lista<Medicamento> MiListadoMedicamentos = new Lista<Medicamento>();
         Random numero = new Random();
-        ArbolB MiArbol<Medicamento> = new ArbolB();
+        ArbolB<TK,TP> MiArbol<Medicamento> = new (ArbolB<TK, TP>());
         public int Contador = 0;
         public string[] Ordenamientos;
 
@@ -205,7 +205,7 @@ namespace Lab_EDI_3.Services
             }
         }
 
-        public void GuardaImprimirPrer(ArbolAVL nuevo)
+       /* public void GuardaImprimirPrer(ArbolAVL nuevo)
         {
             var dataFilePre = System.Web.HttpContext.Current.Server.MapPath("~/ImprimirPre.csv");
             var dataPedidoPre = nuevo;
@@ -227,6 +227,6 @@ namespace Lab_EDI_3.Services
             var dataPedidoPost = nuevo;
             string resultadosPost = nuevo.RecorridoPostorden(dataPedidoPost);
             File.WriteAllText(@dataFilePost, resultadosPost);
-        }
+        }*/
     }
 }

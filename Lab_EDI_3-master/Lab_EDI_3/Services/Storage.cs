@@ -15,8 +15,8 @@ namespace Lab_EDI_3.Services
             return _instance;
         }
 
-        //public CustomEstructure.Lista<Medicamento> MiInventario;
-        //public CustomEstructure.Lista<Cliente> MiListadoCliente;
+        public CustomEstructure.Lista<Medicamento> MiInventario;
+        public CustomEstructure.Lista<Cliente> MiListadoCliente;
         public CustomEstructure.ArbolB MiArbol;
         public int CantidadClientes;
         public Pedido MiPedido;
