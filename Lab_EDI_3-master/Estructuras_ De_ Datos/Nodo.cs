@@ -6,17 +6,17 @@ using System.Threading.Tasks;
 
 namespace Estructuras__De__Datos
 {
-    public class Nodo
+    public class Nodo<T>
     {
-        public List<Nodo> Edges { get; private set; }//Basicamente los hijos
+        public List<Nodo<T>> Edges { get; private set; }//Basicamente los hijos
         public List<int> Keys { get; private set; }//Las llaves del arbol 
-        public Nodo Parent { get; set; }
+        public Nodo<T> Parent { get; set; }
 
         public Nodo(int key)
         {
             Keys = new List<int>();
             Keys.Add(key);
-            Edges = new List<Nodo>();
+            Edges = new List<Nodo<T>>();
 
         }
 
@@ -31,7 +31,7 @@ namespace Estructuras__De__Datos
             }
             return -1;
         }
-        public void InsertEdge(Nodo edge)
+        public void InsertEdge(Nodo<T> edge)
         {
             for (int x = 0; x < Edges.Count; x++)
             {
@@ -45,13 +45,13 @@ namespace Estructuras__De__Datos
             Edges.Add(edge);
             edge.Parent = this;
         }
-        public bool RemoveEdge(Nodo n)
+        public bool RemoveEdge(Nodo<T> n)
         {
             return Edges.Remove(n);
         }
-        public Nodo RemoveEdge(int position)
+        public Nodo<T> RemoveEdge(int position)
         {
-            Nodo edge = null;
+            Nodo<T> edge = null;
             if (Edges.Count > position)
             {
                 edge = Edges[position];
@@ -61,7 +61,7 @@ namespace Estructuras__De__Datos
 
             return edge;
         }
-        public Nodo GetEdge(int position)
+        public Nodo<T> GetEdge(int position)
         {
             if (position < Edges.Count)
             {
@@ -104,7 +104,7 @@ namespace Estructuras__De__Datos
             }
 
         }
-        public void Fuse(Nodo n1)
+        public void Fuse(Nodo<T> n1)
         {
             int totalKeys = n1.Keys.Count;
             int totalEdges = n1.Edges.Count;
@@ -120,12 +120,12 @@ namespace Estructuras__De__Datos
 
             for (int x = Edges.Count - 1; x >= 0; x--)
             {
-                Nodo e = n1.RemoveEdge(x);
+                Nodo<T> e = n1.RemoveEdge(x);
                 this.InsertEdge(e);
             }
         }
 
-        public void Fuse(Nodo n1, Nodo n2)
+        public void Fuse(Nodo<T> n1, Nodo<T> n2)
         {
             int totalKeys = n1.Keys.Count;
             int totalEdges = n1.Edges.Count;
@@ -138,10 +138,10 @@ namespace Estructuras__De__Datos
             this.Fuse(n1);
             this.Fuse(n2);
         }
-        public Nodo[] Split()
+        public Nodo<T>[] Split()
         {
 
-            Nodo newRight = new Nodo(Keys[1]);
+            Nodo<T> newRight = new Nodo<T>(Keys[1]);
 
             for (int x = 2; x < Edges.Count; x++)
             {
@@ -158,7 +158,7 @@ namespace Estructuras__De__Datos
                 Keys.RemoveAt(x);
             }
 
-            return new Nodo[] { this, newRight };
+            return new Nodo<T>[] { this, newRight };
         }
 
         public int Pop(int position)
@@ -197,7 +197,7 @@ namespace Estructuras__De__Datos
                 Keys.Add(k);
             }
         }
-        public Nodo Traverse(int k)
+        public Nodo<T> Traverse(int k)
         {
             int pos = FindEdgePosition(k);
 
